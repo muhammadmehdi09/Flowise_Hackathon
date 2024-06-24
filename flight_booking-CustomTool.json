@@ -1,0 +1,8 @@
+{
+  "name": "flight_booker",
+  "description": "The tool will be used to book a flight. Booking a flight requires a name, email, phone number, city of departure and destination city, and all details are compulsory.",
+  "color": "linear-gradient(rgb(142,16,109), rgb(176,253,66))",
+  "iconSrc": "",
+  "schema": "[{\"id\":0,\"property\":\"name\",\"description\":\"name of the booked flight\",\"type\":\"string\",\"required\":true},{\"id\":1,\"property\":\"email\",\"description\":\"email of the booked flight\",\"type\":\"string\",\"required\":true},{\"id\":2,\"property\":\"phone_number\",\"description\":\"phone number of the booked flight\",\"type\":\"string\",\"required\":true},{\"id\":3,\"property\":\"city_of_departure\",\"description\":\"city of departure of the booked flight\",\"type\":\"string\",\"required\":true},{\"id\":4,\"property\":\"destination_city\",\"description\":\"destination city of the booked flight\",\"type\":\"string\",\"required\":true}]",
+  "func": "const fetch = require(\"node-fetch\");\n\nconst baseUrl = \"http://localhost:5678\"\n\nconst callJS = async () => {\n    const res = await fetch(`${baseUrl}`, {\n        method: \"POST\",\n        body: JSON.stringify({\n            name: $name,\n            email: $email,\n            phone_number: $phone_number,\n            city_of_departure: $city_of_departure,\n            destination_city: $destination_city\n        }),\n        headers: {\n            \"Content-Type\": \"application/json\"\n        },\n    })\n    const parsedRes = await res.json()\n}\ncallJS()\n\nreturn `${parsedRes}`\n\n"
+}
